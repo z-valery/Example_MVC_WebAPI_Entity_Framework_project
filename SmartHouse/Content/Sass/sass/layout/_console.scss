@@ -1,0 +1,54 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+
+#console{
+    .console-device{
+        height: 200px;
+        background-color: #1476c8;
+        border: 1px solid white;
+        @include breakpoint(1200px){
+                border: none;
+                position:relative;
+                @include background(url("../images/console-selected-device.png") no-repeat 50% 50%, url("../images/console-device.jpg") no-repeat 50% 50%);
+            }
+    }
+
+    .console-settings{     
+        position:relative;       
+        background-color: #1476c8;
+        height: 200px;
+        border: 2px solid white;
+        border-radius: 12px;
+        @include breakpoint(1200px){
+            border: none;
+            margin-top: 0px;
+            background: #0d2b40 url("../images/console-settings.jpg") no-repeat 0px 0px;
+        }
+
+        a{
+            font-size:18px;
+            text-decoration:none;
+            font-style:italic;
+            color: #70a9da;
+            &:hover{
+                text-decoration:underline;
+                color: #ffffff;
+            }
+        }
+
+        .on{
+            position: absolute;
+            bottom: 11px;
+            left: 20px;
+        }
+        .off{
+            position: absolute;
+            bottom: 11px;
+            left: 55px;
+        }
+        .is-active{
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    }
+}

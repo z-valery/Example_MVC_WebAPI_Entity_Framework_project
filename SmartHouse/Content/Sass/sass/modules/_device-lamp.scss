@@ -1,0 +1,65 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+@import "../utilites/_index.scss";
+@import "_device.scss";
+
+%device-lamp{
+    .content{
+        position: absolute;
+        width: $sz-device-width;
+        height: $sz-device-height;
+        @include background(url("../images/lamp.png") no-repeat 50% 50%);
+
+        .property{
+            text-align: right;
+            font-style: italic;
+            color: $color-device-property-text;
+
+            .lamp-bg{
+                position: absolute;
+                width: 300px;
+                height: 200px;
+                @include background(url("../images/lamp_bg.png") no-repeat 49% 20%);
+                /*opacity: 0.45;*/
+            }
+             
+            .text{
+                display: block;
+                float:right;
+                clear: both;
+                margin-right: 20px;
+                margin-top: 20px;
+            }           
+            .text-value{
+                display: block;
+                float:right;
+                clear: both;
+                margin-right: 20px;
+                line-height: 40px;
+                text-decoration: underline;
+                font-size: 26px;
+            }
+        }
+    }
+}
+
+.devices{
+    .device-lamp{
+        @extend %device;
+        @extend %device-lamp;
+    }
+}
+
+.console-device{
+    .device-lamp{
+        @extend %device-lamp;
+        display: block;
+        width: 300px;
+        margin: 0px auto;
+        margin-bottom: 10px;
+        position: relative;
+        @include breakpoint(1200px){
+            margin-left: 225px;
+        }
+    }
+}

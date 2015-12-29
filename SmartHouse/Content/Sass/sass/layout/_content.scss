@@ -1,0 +1,26 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+
+#content{
+    background: #0d2b40;
+    text-align: center;
+    @include breakpoint(1200px){
+        text-align: left;
+    }
+}
+
+.api-content{
+    color:whitesmoke;
+    
+    .text{
+        text-align: center;
+        margin-top: 2%;
+    }
+
+    .tv-values{
+        text-align:right;
+        p {
+            padding: 5px;
+        }
+    }
+}

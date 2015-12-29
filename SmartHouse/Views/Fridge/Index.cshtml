@@ -1,0 +1,31 @@
+﻿@using SmartHouse.Models
+@model Fridge
+
+<a href="/Home/Edit/@Model.Id/@((Model as Device).TypeDevice())" class="device-fridge">
+    <div class="content">
+        <div class="property">
+            <div class="temp1">
+                <div class="tmeter">
+                    <div class="scale" style="height: @Model.TempScale(@Model.Temp1, 2)"></div>
+                    <div class="circle"></div>
+                </div>
+                <span class="text">TEMP 1:</span>
+                <span class="text-value">@Model.Temp1</span>
+            </div>
+            <div class="temp2">
+                <div class="tmeter">
+                    <div class="scale" style="height: @Model.TempScale(@Model.Temp2, 5)"></div>
+                    <div class="circle"></div>
+                </div>
+                <span class="text">TEMP 2:</span>
+                <span class="text-value">+@Model.Temp2</span>
+            </div>
+        </div>
+    </div>
+    <div class="bg">
+        <div class="br-top"></div>
+        <div class="br-top-left"></div>
+        <div class="br-bottom-left"></div>
+        <div class="br-bottom-right"></div>
+    </div>
+</a>

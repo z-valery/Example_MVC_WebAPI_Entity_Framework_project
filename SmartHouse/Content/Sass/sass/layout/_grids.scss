@@ -1,0 +1,115 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\susy-2.2.9\\sass\\_susy.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\_compass.scss";
+
+$susy: (
+  columns: 12,
+  /*gutters: 1/4,*/
+  gutters: 0,
+	container: 1200px,
+	math: fluid,
+	output: float,
+	gutter-position: inside,
+	
+	/*debug: (
+		image: show,
+		color: rgba(#66f, .5),
+		output: background,
+		toggle: top right,
+	)*/
+	
+);
+
+#main{
+    @include container();
+    min-width: 768px;
+}
+
+#header{
+    @include span(10);
+    @include push(1);
+    @include breakpoint(1200px){
+        @include span(12);
+        @include push(0);
+    }
+}
+
+#api-header
+{
+    @include span(10);
+    @include push(1);
+    @include breakpoint(1200px){
+        @include span(12);
+        @include push(0);
+    }
+}
+
+
+#menu{
+    @include span(10);
+    @include push(1);
+    @include breakpoint(1200px){
+        @include span(12);
+        @include push(0);
+    }
+}
+
+#console{
+    @include span(12);
+}
+
+.console-device{
+    @include span(7);
+    @include push(2.5);
+    min-width: 500px;
+    margin-top: 10px;
+    @include breakpoint(1200px){
+        @include span(7);
+        @include push(0);
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.console-settings{
+    @include span(7);
+    @include push(2.5);
+    margin-top: 15px;
+    min-width: 500px;
+    @include breakpoint(1200px){
+        @include span(5 last);
+        @include push(0);
+    }
+}
+
+#content {
+    @include span(10);
+    @include push(1);
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    min-height: 400px;
+    @include breakpoint(1200px){
+	    @include span(10);
+        @include push(1);
+    }
+}
+
+#footer{
+    @include span(12); 
+}
+
+.pre-footer-column{
+    @include span(4);
+    @include push(4);
+    @include breakpoint(1200px){
+        @include push(1);
+        @include span(2);
+    }
+    &:first-child{
+        @include breakpoint(1200px){
+            @include push(2);
+            @include span(2);
+        }
+    }
+
+}

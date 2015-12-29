@@ -1,0 +1,28 @@
+﻿@using SmartHouse.Models
+@using SmartHouse.Models.Interfaces
+@model Tv
+
+@if (Model != null)
+{
+    <a href="#" class="device-tv">
+        <div class="content">
+            <div class="property">
+                <span class="channel">CHANNEL: @Convert.ToByte((Model as Tv).Channel)</span>
+                <span class="channel-name">@((Model as Tv).Channel)</span>
+                <div class="volume">
+                    <span class="volume-text">VOLUME:</span>
+                    @for (int i = 1; i <= (Model as Tv).Volume; i++)
+                    {
+                        <div class="level"></div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="bg">
+            <div class="br-top"></div>
+            <div class="br-top-left"></div>
+            <div class="br-bottom-left"></div>
+            <div class="br-bottom-right"></div>
+        </div>
+    </a>
+}

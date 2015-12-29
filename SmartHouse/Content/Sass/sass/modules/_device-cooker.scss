@@ -1,0 +1,122 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+@import "../utilites/_index.scss";
+@import "_device.scss";
+
+%device-cooker{
+    .content{
+        position: absolute;
+        width: $sz-device-width;
+        height: $sz-device-height;
+        @include background(url("../images/cooker.png") no-repeat 50% 50%);
+
+        .property{
+            position: absolute;
+            top: 24px;
+            left: 72px;
+            width: 156px;
+            height: 152px;
+            font-style: italic;
+            color: $color-device-property-text;
+        
+            .stove1{
+                position: absolute;
+                top: 14px;
+                left: 16px;
+                height: 61px;
+                width: 61px;
+                border-radius: 32px;
+                background-color: white;
+            }
+            .stove2{
+                position: absolute;
+                top: 23px;
+                left: 94px;
+                height: 43px;
+                width: 43px;
+                border-radius: 22px;
+                background-color: white;
+            }
+            .stove3{
+                position: absolute;
+                top: 94px;
+                left: 25px;
+                height: 43px;
+                width: 43px;
+                border-radius: 22px;
+                background-color: white;
+            }
+            .stove4{
+                position: absolute;
+                top: 100px;
+                left: 100px;
+                height: 31px;
+                width: 31px;
+                border-radius: 16px;
+                background-color: white;
+            }
+
+            .temp1{
+                position:absolute;
+                top: 0px;
+                left: -65px;
+                .text-value{
+                    line-height: 40px;
+                    text-decoration: underline;
+                    font-size: 26px;
+                }
+            }
+            .temp2{
+                position:absolute;
+                bottom: 0px;
+                left: -65px;
+                .text-value{
+                    line-height: 40px;
+                    text-decoration: underline;
+                    font-size: 26px;
+                }
+            }
+            .temp3{
+                position:absolute;
+                top: 0px;
+                left: 165px;
+                .text-value{
+                    line-height: 40px;
+                    text-decoration: underline;
+                    font-size: 26px;
+                }
+            }
+            .temp4{
+                position:absolute;
+                bottom: 0px;
+                left: 165px;
+                .text-value{
+                    line-height: 40px;
+                    text-decoration: underline;
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+}
+
+.devices{
+    .device-cooker{
+        @extend %device;
+        @extend %device-cooker;
+    }
+}
+
+.console-device{
+    .device-cooker{
+        @extend %device-cooker;
+        display: block;
+        width: 300px;
+        margin: 0px auto;
+        margin-bottom: 10px;
+        position: relative;
+        @include breakpoint(1200px){
+            margin-left: 225px;
+        }
+    }
+}

@@ -1,0 +1,95 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+@import "../utilites/_index.scss";
+@import "_device.scss";
+
+%device-fridge{
+    .content{
+        position: absolute;
+        width: $sz-device-width;
+        height: $sz-device-height;
+        @include background(url("../images/fridge-bg.png") no-repeat 28% 50%);
+
+        .property{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 90px;
+            font-style: italic;
+            color: $color-device-property-text;;
+            text-align: right;
+              
+            %temetr{
+                float: left;
+                position: relative;
+                border: 1px solid white;
+                width: 16px;
+
+                .scale{
+                    position: absolute;
+                    bottom: 13px;
+                    left: 6px;
+                    width: 5px;
+                    background-color: white;
+                }
+                .circle{
+                    position: absolute;
+                    bottom: 2px;
+                    left: 2px;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 6px;
+                    background-color: white;
+                }
+            }         
+             
+            .temp1{
+                .tmeter{
+                    @extend %temetr;
+                    height: 55px;
+                    .scale{
+                        /*height: 40px;*/
+                    }
+                }
+            }
+
+            .temp2{
+                margin-top: 10px;
+                .tmeter{
+                    @extend %temetr;
+                    height: 90px;
+                    .scale{
+                        /*height: 75px;*/
+                    }
+                }
+            }
+
+            .text-value{
+                line-height: 40px;
+                text-decoration: underline;
+                font-size: 26px;
+            }
+        }
+    }
+}
+
+.devices{
+    .device-fridge{
+        @extend %device;
+        @extend %device-fridge;
+    }
+}
+
+.console-device{
+    .device-fridge{
+        @extend %device-fridge;
+        display: block;
+        width: 300px;
+        margin: 0px auto;
+        margin-bottom: 10px;
+        position: relative;
+        @include breakpoint(1200px){
+            margin-left: 225px;
+        }
+    }
+}

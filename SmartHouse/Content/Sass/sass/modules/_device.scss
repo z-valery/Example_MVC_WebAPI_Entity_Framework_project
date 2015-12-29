@@ -1,0 +1,86 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "../utilites/_index.scss";
+
+
+%device{
+    display: inline-block;
+    width: $sz-device-width;
+    height: $sz-device-height;
+    margin-top: 15px;
+    margin-left: 15px;
+    background-color: #3a91db;
+    position: relative;
+
+    .bg{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 300px;
+        height: 200px;
+
+        .br-top{
+            height: 2px;
+            width: 300px;
+            background-color: $color-device-border;
+        }
+        .br-top-left{
+            height: 1px;
+            width: 50px;
+            background-color: $color-device-border;
+        }
+        .br-bottom-left{
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            height: 12px;
+            width: 12px;
+            border-left: 1px solid $color-device-border;
+            border-bottom: 1px solid $color-device-border;
+        }
+        .br-bottom-right{
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            height: 12px;
+            width: 12px;
+            border-right: 1px solid $color-device-border;
+            border-bottom: 1px solid $color-device-border;
+        }
+    }
+
+    // event
+    &:hover{
+        .br-top{
+            background-color: $color-device-border-hover;
+        }
+        .br-top-left{
+            background-color: $color-device-border-hover;
+        }
+        .br-bottom-left{
+            border-left-color: $color-device-border-hover;
+            border-bottom-color: $color-device-border-hover;
+        }
+        .br-bottom-right{
+            border-right-color: $color-device-border-hover;
+            border-bottom-color: $color-device-border-hover;
+        }
+    }
+    &:active{
+        .br-top{
+            background-color: $color-device-border-active;
+        }
+        .br-top-left{
+            background-color: $color-device-border-active;
+        }
+        .br-bottom-left{
+            border-left-color: $color-device-border-active;
+            border-bottom-color: $color-device-border-active;
+        }
+        .br-bottom-right{
+            border-right-color: $color-device-border-active;
+            border-bottom-color: $color-device-border-active;
+        }
+    }
+
+
+}

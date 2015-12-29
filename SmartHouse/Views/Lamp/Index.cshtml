@@ -1,0 +1,18 @@
+﻿@using SmartHouse.Models
+@model Lamp
+
+<a href="/Home/Edit/@Model.Id/@((Model as Device).TypeDevice())" class="device-lamp">
+    <div class="content">
+        <div class="property">
+            <div class="lamp-bg" style="opacity: @Model.BrightPercent(@Model.Bright)"></div>
+            <span class="text">BRIGHT:</span>
+            <span class="text-value">@Model.Bright</span>
+        </div>
+    </div>
+    <div class="bg">
+        <div class="br-top"></div>
+        <div class="br-top-left"></div>
+        <div class="br-bottom-left"></div>
+        <div class="br-bottom-right"></div>
+    </div>
+</a>

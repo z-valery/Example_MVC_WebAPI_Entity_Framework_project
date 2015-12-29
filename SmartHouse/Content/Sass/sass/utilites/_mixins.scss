@@ -1,0 +1,122 @@
+﻿/* ## Mixin management
+--------------------------------------------- */
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "../utilites/_index.scss";
+
+
+/* Button rount content
+--------------------------------------------- */
+@mixin button-circle-content($radius, $border-size, $color-theme){
+    display:block;
+    text-decoration:none;
+    text-align:center;
+    color:ws-color("text",$color-theme);
+
+    .content{
+        position: relative;
+        top:0px;
+        left:0px;
+        margin: 0px auto;
+        height: $radius;
+        width: $radius;
+
+        .fg{
+            position: absolute;
+            height: $radius - $border-size * 2 + 1;
+            width: $radius - $border-size * 2 + 1;
+            border-color: ws-color("border",$color-theme);
+            border-width: $border-size;
+            border-style: solid;
+            @include border-radius($radius/2 + $border-size * 2);
+            @include transition(all 0.3s ease);
+        }
+
+        .bg{
+            position: absolute;
+            height: $radius;
+            width: $radius;
+            @include border-radius($radius/2);
+            @include opacity(0.8);
+            @include background(radial-gradient(ws-color("bg_start",$color-theme) 50%, ws-color("bg_end",$color-theme) 100%));
+            @include box-shadow(0px 0px 20px rgba(ws-color("shadow",$color-theme), 0.8));
+        }
+    }
+
+    // event
+    &:hover{
+        .bg{
+            @include background(radial-gradient(ws-color("bg_start_active",$color-theme) 50%, ws-color("bg_end_active",$color-theme) 100%));
+            @include box-shadow(0px 0px 20px rgba(ws-color("shadow_active",$color-theme), 0.8));
+        }
+        .text{
+            color:ws-color("text_active",$color-theme);
+            text-decoration:underline;
+        }
+    }
+
+    &:active{
+        .bg{
+            @include background(radial-gradient(darken(ws-color("bg_start_active",$color-theme), 10%) 50%, darken(ws-color("bg_end",$color-theme), 10%) 100%));
+        }
+    }
+}
+
+
+/* Button rount content
+--------------------------------------------- */
+@mixin triangle($mode, $size)
+{
+    @if($mode=="up")
+    { 
+        width: 0;
+	    height: 0;
+	    border-left: $size/2 solid transparent;
+	    border-right: $size/2 solid transparent;
+	    border-bottom: $size solid ws-color("border", "menu");
+        &:hover{
+            border-bottom: $size solid  ws-color("bg_start_active", "menu");
+        }
+    }
+    @else 
+    {
+        @if($mode=="down") 
+        {
+            width: 0;
+	        height: 0;
+	        border-left: $size/2 solid transparent;
+	        border-right: $size/2 solid transparent;
+	        border-top: $size solid ws-color("border", "menu");
+            &:hover{
+                border-top: $size solid ws-color("bg_start_active", "menu");
+            }
+        }
+        @else
+        {
+            @if($mode=="left")
+            {
+                width: 0;
+	            height: 0;
+	            border-top: $size/2 solid transparent;
+	            border-right: $size solid ws-color("border", "menu");
+	            border-bottom: $size/2 solid transparent;
+                &:hover{
+                    border-right: $size solid ws-color("bg_start_active", "menu");
+                }
+            }
+            @else
+            {
+                @if($mode=="right")
+                {
+                    width: 0;
+	                height: 0;
+	                border-top: $size/2 solid transparent;
+	                border-left: $size solid ws-color("border", "menu");
+	                border-bottom: $size/2 solid transparent;
+                    &:hover{
+                        border-left: $size solid ws-color("bg_start_active", "menu");
+                    }
+                }
+            }
+        }
+    }
+}

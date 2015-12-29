@@ -1,0 +1,83 @@
+﻿@using SmartHouse.Models
+@using SmartHouse.Models.Interfaces
+@model Device
+
+
+<div id="console">
+    <div class="console-device">
+        @Html.Partial((Model as IDrawe).Drawe(), Model)
+    </div>
+    <div class="console-settings">
+        <a href="#" class="settings">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <span class="text">SETTINGS</span>
+        </a>
+        <a href="/Home/Console/On" class="on @((Model as Device).IsOn ? "is-active" : "")">ON</a>
+        <a href="/Home/Console/Off" class="off @(!(Model as Device).IsOn ? "is-active" : "")">OFF</a>
+        <a href="/Home/Delete/@((Model as Device).Id)/@((Model as Device).TypeDevice())" class="delete">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <span class="text">DELETE</span>
+        </a>
+        <a href="/Home/Console/Ok" class="ok">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <span class="text">OK</span>
+        </a>
+        <div class="control">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <a href="/Home/Console/Up" class="property-next">
+                <div class="bg"></div>
+            </a>
+            <a href="/Home/Console/Down" class="property-prev">
+                <div class="bg"></div>
+            </a>
+            <a href="/Home/Console/Right" class="property-increment">
+                <div class="bg"></div>
+            </a>
+            <a href="/Home/Console/Left" class="property-decriment">
+                <div class="bg"></div>
+            </a>
+        </div>
+        <div class="propertyes">
+            <div class="header">PROPERTY</div>
+            <div class="bg"></div>
+            <div class="content">
+                <select name="propertyes" id="device-prop" size="5">
+                    @foreach (string property in (ViewBag.DeviceConsole as DeviceConsole).Settings)
+                    {
+                        if (property == (ViewBag.DeviceConsole as DeviceConsole).SelectedSetting)
+                        {
+                            <option selected>@property</option>
+                        }
+                        else
+                        {
+                            <option>@property</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="value">
+            <div class="header">VALUE</div>
+            <div class="bg"></div>
+            <div class="content">
+                <span class="text">
+                    @((ViewBag.DeviceConsole as DeviceConsole).Value)
+                    <div class="border-top"></div>
+                    <div class="border-bottom"></div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

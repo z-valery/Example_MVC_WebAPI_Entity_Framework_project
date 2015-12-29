@@ -1,0 +1,35 @@
+﻿@using SmartHouse.Models
+@model Cooker
+
+<a href="/Home/Edit/@Model.Id/@((Model as Device).TypeDevice())" class="device-cooker">
+    <div class="content">
+        <div class="property">
+            <div class="stove1" style="opacity: @Model.TempPercent(Model.Temp1, Model.MaxTemp1)"></div>
+            <div class="stove2" style="opacity: @Model.TempPercent(Model.Temp3, Model.MaxTemp3)"></div>
+            <div class="stove3" style="opacity: @Model.TempPercent(Model.Temp2, Model.MaxTemp2)"></div>
+            <div class="stove4" style="opacity: @Model.TempPercent(Model.Temp4, Model.MaxTemp4)"></div>
+            <div class="temp1">
+                <span class="text">TEMP1:</span> <br />
+                <span class="text-value">@Model.Temp1</span>
+            </div>
+            <div class="temp2">
+                <span class="text">TEMP2:</span> <br />
+                <span class="text-value">@Model.Temp2</span>
+            </div>
+            <div class="temp3">
+                <span class="text">TEMP3:</span> <br />
+                <span class="text-value">@Model.Temp3</span>
+            </div>
+            <div class="temp4">
+                <span class="text">TEMP4:</span> <br />
+                <span class="text-value">@Model.Temp4</span>
+            </div>
+        </div>
+    </div>
+    <div class="bg">
+        <div class="br-top"></div>
+        <div class="br-top-left"></div>
+        <div class="br-bottom-left"></div>
+        <div class="br-bottom-right"></div>
+    </div>
+</a>

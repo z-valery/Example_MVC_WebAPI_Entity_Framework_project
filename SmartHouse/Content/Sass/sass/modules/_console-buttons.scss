@@ -1,0 +1,103 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+@import "../utilites/_index.scss";
+
+.console-settings {
+
+    .settings {
+        @include button-circle-content(75px, 3px, "defaulte");
+        position: absolute;
+        top: 60px;
+        left: -39px;
+        .fg {
+            @include background(url("../images/settings-74-1.png") no-repeat 50% 50%, url("../images/menu-settings.png") no-repeat 50% 50%);
+        }
+        .text {
+            display: none;
+        }
+        @include breakpoint(1200px){
+                top: -39px;
+                left: -39px;
+                background-color: none;
+                .text {
+                    position: absolute;
+                    top: -3px;
+                    right: -85px;
+                }
+            }
+    }
+
+
+    .delete {
+        @include button-circle-content(50px, 3px, "delete");
+        position: absolute;
+        top: 13px;
+        right: 13px;
+        .fg {
+            @include background(url("../images/52-1.png") no-repeat 50% 50%);
+        }
+        .text {
+            position: absolute;
+            top: -1px;
+            right: 54px;
+        }
+    }
+
+
+    .ok {
+        @include button-circle-content(64px, 3px, "ok");
+        position: absolute;
+        top: 120px;
+        right: 20px;
+        .fg {
+            @include background(url("../images/logo-64-1.png") no-repeat 50% 50%);
+        }
+        .text {
+            position: absolute;
+            bottom: 1px;
+            right: 71px;
+        }
+    }
+
+
+    .control {
+        @include button-circle-content(116px, 5px, "defaulte");
+        position: absolute;
+        top: 42px;
+        right: 90px;
+        .fg {
+            @include background(url("../images/100-settings-control.png") no-repeat 50% 50%);
+        }
+
+        .property-next .bg{
+            position:absolute;
+            top:27px;
+            left:50px;
+            @include triangle(up, 16px);
+        }
+
+        .property-prev .bg{
+            position:absolute;
+            bottom:27px;
+            left:50px;
+            @include triangle(down, 16px);
+        }
+
+        .property-increment .bg{
+            position:absolute;
+            top:50px;
+            right:27px;
+            @include triangle(right, 16px);
+        }
+
+        .property-decriment .bg{
+            position:absolute;
+            top:50px;
+            left:27px;
+            @include triangle(left, 16px);
+        }
+
+    }
+
+
+}

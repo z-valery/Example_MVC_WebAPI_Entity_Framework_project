@@ -1,0 +1,21 @@
+﻿@using SmartHouse.Models
+@model Microwave
+
+<a href="/Home/Edit/@Model.Id/@((Model as Device).TypeDevice())" class="device-microwave">
+    <div class="content">
+        <div class="property">
+            <div class="grill" style="opacity: @Model.GrillPercent(@Model.Grill)"></div>
+            <div class="wave" style="opacity:  @Model.PowerPercent(@Model.Power)"></div>
+            <span class="text">POWER:</span>
+            <span class="text-value">@Model.Power</span>
+            <span class="text">GRILL:</span>
+            <span class="text-value">@Model.Grill</span>
+        </div>
+    </div>
+    <div class="bg">
+        <div class="br-top"></div>
+        <div class="br-top-left"></div>
+        <div class="br-bottom-left"></div>
+        <div class="br-bottom-right"></div>
+    </div>
+</a>

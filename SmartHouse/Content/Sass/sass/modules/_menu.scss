@@ -1,0 +1,53 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "../utilites/_index.scss";
+
+%button-menu {
+    @include button-circle-content(83px, 3px, "menu");
+    display: inline-block;
+    margin-left: 39px;
+
+    .text {
+        line-height: 30px;
+    }
+}
+
+.button-tv {
+    @extend %button-menu;
+    margin-left: 20px;
+
+    .fg {
+        @include background(url("../images/menu-tv.png") no-repeat 50% 50%, url("../images/menu-82-1.png") no-repeat 50% 50%);
+    }
+}
+
+.button-fridge {
+    @extend %button-menu;
+
+    .fg {
+        @include background(url("../images/menu-fridge.png") no-repeat 50% 50%, url("../images/menu-82-2.png") no-repeat 50% 50%);
+    }
+}
+
+.button-lamp {
+    @extend %button-menu;
+
+    .fg {
+        @include background(url("../images/menu-lamp.png") no-repeat 50% 50%, url("../images/menu-82-3.png") no-repeat 50% 50%);
+    }
+}
+
+.button-cooker {
+    @extend %button-menu;
+
+    .fg {
+        @include background(url("../images/menu-cooker.png") no-repeat 50% 50%, url("../images/menu-82-4.png") no-repeat 50% 50%);
+    }
+}
+
+.button-microwave {
+    @extend %button-menu;
+
+    .fg {
+        @include background(url("../images/menu-microwave.png") no-repeat 50% 50%, url("../images/menu-82-5.png") no-repeat 50% 50%);
+    }
+}

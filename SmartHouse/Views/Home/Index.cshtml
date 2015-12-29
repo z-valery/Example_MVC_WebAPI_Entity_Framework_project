@@ -1,0 +1,21 @@
+﻿@using SmartHouse.Models
+@model IEnumerable<SmartHouse.Models.Interfaces.IDrawe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (ViewBag.SelectedDevice != null)
+{
+   @Html.Partial("~/Views/Console/Index.cshtml", (SmartHouse.Models.Interfaces.IDrawe)ViewBag.SelectedDevice)
+}
+
+<div id="content">
+
+    <div class="devices">
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial(item.Drawe(), item);
+        }
+    </div>
+</div>

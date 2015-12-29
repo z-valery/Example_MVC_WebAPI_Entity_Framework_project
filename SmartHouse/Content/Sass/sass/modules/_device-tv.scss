@@ -1,0 +1,76 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\compass-core-1.0.3\\stylesheets\\compass\\_css3.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+@import "../utilites/_index.scss";
+@import "_device.scss";
+
+%device-tv{
+    .content{
+        position: absolute;
+        width: $sz-device-width;
+        height: $sz-device-height;
+        @include background(url("../images/TV.png") no-repeat 50% 50%);
+
+        .property{
+            position: absolute;
+            top: 24px;
+            left: 35px;
+            width: 230px;
+            height: 100px;
+            font-style: italic;
+            text-align: left;
+            color: $color-device-property-text;
+
+            .channel{
+                display: block;
+                padding-top: 2px;
+                padding-left: 2px;
+            }
+
+            .channel-name{
+                font-size: 14px;
+                text-decoration: underline;
+                padding-left: 5px;
+            }
+
+            .volume{
+                position: absolute;
+                top: 81px;
+                left: 2px;
+
+                .volume-text{
+                    margin-right: 10px;
+                }
+
+                .level{
+                    float: right;
+                    height: 11px;
+                    width: 7px;
+                    margin-right: 3px;
+                    margin-top: 3px;
+                    background-color: $color-device-property-text;
+                }
+            }
+        }
+    }
+}
+
+.devices{
+    .device-tv{
+        @extend %device;
+        @extend %device-tv;
+    }
+}
+
+.console-device{
+    .device-tv{
+        @extend %device-tv;
+        display: block;
+        width: 300px;
+        margin: 0px auto;
+        margin-bottom: 10px;
+        position: relative;
+        @include breakpoint(1200px){
+            margin-left: 225px;
+        }
+    }
+}

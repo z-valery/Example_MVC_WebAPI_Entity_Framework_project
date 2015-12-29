@@ -1,0 +1,353 @@
+﻿@using SmartHouse.Models
+@using SmartHouse.Models.Interfaces
+@model Tv
+
+@{
+    ViewBag.Title = "WebApi";
+    Layout = "~/Views/Shared/_LayoutApi.cshtml";
+}
+
+
+<div id="console">
+    <div class="console-device"></div>
+    <div class="console-settings">
+        <a href="#" class="settings">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <span class="text">SETTINGS</span>
+        </a>
+        <a class="on">ON</a>
+        <a class="off">OFF</a>
+        <a href="/Home/Index" class="delete">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <span class="text">DELETE</span>
+        </a>
+        <a href="/Home/Index" class="ok">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <span class="text">OK</span>
+        </a>
+        <div class="control">
+            <div class="content">
+                <div class="bg"></div>
+                <div class="fg"></div>
+            </div>
+            <a class="property-next">
+                <div class="bg"></div>
+            </a>
+            <a class="property-prev">
+                <div class="bg"></div>
+            </a>
+            <a class="property-increment">
+                <div class="bg"></div>
+            </a>
+            <a class="property-decriment">
+                <div class="bg"></div>
+            </a>
+        </div>
+        <div class="propertyes">
+            <div class="header">PROPERTY</div>
+            <div class="bg"></div>
+            <div class="content">
+                <select name="propertyes" id="device-prop" size="5"></select>
+            </div>
+        </div>
+        <div class="value">
+            <div class="header">VALUE</div>
+            <div class="bg"></div>
+            <div class="content">
+                <span class="text">
+                    <div class="border-top"></div>
+                    <div class="border-bottom"></div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (Model != null)
+{
+    <div id="content" class="api-content">
+        <div class="tv-values">
+            <p>Id:</p>
+            <input type="number" disabled id="id" value="@Model.Id" /> <br />
+            <p>IsOn:</p>
+            <input type="text" disabled id="isOn" value="@Model.IsOn.ToString()" /> <br />
+            <p>Volume:</p>
+            <input type="number" disabled id="volume" value="@Model.Volume" /> <br />
+            <p>Channel:</p>
+            <input type="number" disabled id="channel" value="@(Convert.ToByte(Model.Channel))" /> <br />
+        </div>
+    </div>
+}
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        // Variable
+        //***********************************
+
+        // Current Tv
+        var tv = {
+            Id: $("#id").val(),
+            IsOn: $("#isOn").val(),
+            Volume: $("#volume").val(),
+            Channel: $("#channel").val()
+        };
+
+
+        // Load
+        //***********************************
+        ShowTv();
+        GetSettings();
+        SetClassOnOff();
+
+
+        // Event
+        //***********************************
+
+        // Next Setting
+        $(".property-prev").on("click", function (event) {
+            event.preventDefault();
+            var item = $("#device-prop option:selected").next("option").text();
+            if (item !== "") {
+                $("#device-prop").val(item).prop("selected", true);
+                GetValue();
+            }
+        });
+
+        // Prev Setting
+        $(".property-next").click(function (event) {
+            event.preventDefault();
+            var item = $("#device-prop option:selected").prev("option").text();
+            if (item !== "") {
+                $("#device-prop").val(item).prop("selected", true);
+                GetValue();
+            }
+        });
+
+        // Increment Value
+        $(".property-increment").click(function (event) {
+            event.preventDefault();
+            GetCurrentTv();
+            var setting = $("#device-prop option:selected").text();
+            $.ajax({
+                url: "/api/ApiConsole/Tv/PutIncrValue/" + setting,
+                type: "PUT",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    SetCurrentTv(data);
+                    GetValue();
+                }
+            });
+        });
+
+        // Decriment Value
+        $(".property-decriment").click(function (event) {
+            event.preventDefault();
+            GetCurrentTv();
+            var setting = $("#device-prop option:selected").text();
+            $.ajax({
+                url: "/api/ApiConsole/Tv/PutDecrValue/" + setting,
+                type: "PUT",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    SetCurrentTv(data);
+                    GetValue();
+                }
+            });
+        });
+
+        // On
+        $(".on").click(function (event) {
+            event.preventDefault();
+            GetCurrentTv();
+            $.ajax({
+                url: "/api/ApiConsole/Tv/PutIsOn/true",
+                type: "PUT",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    SetCurrentTv(data);
+                    ShowTv();
+                    GetSettings();
+                    GetValue();
+                    SetClassOnOff();
+                }
+            });
+        });
+        $(".on").mouseover(function () {
+            $(this).css("cursor", "pointer");
+        });
+
+        // Off
+        $(".off").click(function (event) {
+            event.preventDefault();
+            GetCurrentTv();
+            $.ajax({
+                url: "/api/ApiConsole/Tv/PutIsOn/false",
+                type: "PUT",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    SetCurrentTv(data);
+                    ResetSettings();
+                    SetClassOnOff();
+                }
+            });
+        });
+        $(".off").mouseover(function () {
+            $(this).css("cursor", "pointer");
+        });
+
+        // Ok
+        $(".ok").click(function (event) {
+            event.preventDefault();
+            GetCurrentTv();
+            var id = $("#id").val();
+            $.ajax({
+                url: "/api/ApiTv/" + id,
+                type: "PUT",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    location.assign("/Home/Index");
+            }
+            });
+        });
+
+        // Delete
+        $(".delete").click(function (event) {
+            event.preventDefault();
+            var id = $("#id").val();
+            $.ajax({
+                url: "/api/ApiTv/" + id,
+                type: "DELETE",
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    location.assign("/Home/Index");
+                }
+            });
+        });
+
+
+        // Function
+        //***********************************
+
+        // Set Current Tv
+        function SetCurrentTv(tv) {
+            $("#id").val(tv.Id);
+            $("#isOn").val(tv.IsOn);
+            $("#volume").val(tv.Volume);
+            $("#channel").val(tv.Channel);
+            ShowTv();
+        };
+
+        // Get Current Tv
+        function GetCurrentTv() {
+            tv = {
+                Id: $("#id").val(),
+                IsOn: $("#isOn").val(),
+                Volume: $("#volume").val(),
+                Channel: $("#channel").val()
+            };
+        }
+
+        // ShowTv
+        function ShowTv() {
+            GetCurrentTv();
+            $.ajax({
+                url: "/WebApiView/PartialTv/",
+                type: "POST",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    $(".console-device").html(data);
+                }
+            });
+        };
+
+        // Get Settings
+        function GetSettings() {
+            GetCurrentTv();
+            $.ajax({
+                url: "/api/ApiConsole/Tv/GetSettings",
+                type: "GET",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    var properties = "";
+                    if (tv.IsOn.toLowerCase() == "true") {
+                        $.each(data, function (index, property) {
+                            properties += "<option>" + property + "</option>";
+                        });
+                        $("#device-prop").html(properties);
+                        SelectFirstItem();
+                    }
+                    else {
+                        $("#device-prop").html("");
+                    }
+                }
+            });
+        };
+
+        // Reset Settings
+        function ResetSettings() {
+            $("#device-prop").html("");
+            $(".value .content .text").html("");
+        };
+
+        // Get Value
+        function GetValue() {
+            GetCurrentTv();
+            var setting = $("#device-prop option:selected").text();
+            $.ajax({
+                url: "/api/ApiConsole/Tv/GetValue/" + setting,
+                type: "POST",
+                data: JSON.stringify(tv),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    $(".value .content .text").html(data);
+                }
+            });
+        }
+
+        // Select select firsr item
+        function SelectFirstItem() {
+            var item = $("#device-prop option:first-child").text();
+            if (item !== "") {
+                $("#device-prop option:first-child").prop("selected", true);
+                GetValue();
+            }
+        }
+
+        // Set Class a OnOff
+        function SetClassOnOff() {
+            GetCurrentTv();
+            $(".on").removeClass("is-active");
+            $(".off").removeClass("is-active");
+            if (tv.IsOn.toLowerCase() == "true") {
+                $(".on").addClass("is-active");
+            }
+            else {
+                $(".off").addClass("is-active");
+            }
+        };
+
+    });
+</script>

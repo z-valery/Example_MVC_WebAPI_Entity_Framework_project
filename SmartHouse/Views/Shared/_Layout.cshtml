@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Smart House MVC Entity</title>
+    <link href="~/Content/Sass/css/style.css" rel="stylesheet" type="text/css" />
+    @System.Web.Optimization.Scripts.Render("~/Scripts/modernizr-2.6.2.js")
+    @System.Web.Optimization.Scripts.Render("~/Scripts/jquery-1.10.2.min.js")
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div class="logo">
+                <span class="logo-head">z.valera.86@yandex.ru</span>
+                <div class="mvc_webapi">
+                    <a href="/Home/MvcWebApi/@ViewBag.MvcWebApi" class="button-mvc_webapi">
+                        <div class="content">
+                            <div class="bg"></div>
+                            <div class="fg"></div>
+                        </div>
+                        <span class="text">@ViewBag.MvcWebApi</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="menu">
+            <div class="buttons">
+                <a href="/Home/Create/Tv" class="button-tv">
+                    <div class="content">
+                        <div class="bg"></div>
+                        <div class="fg"></div>
+                    </div>
+                    <span class="text">TV</span>
+                </a>
+                <a href="/Home/Create/Fridge" class="button-fridge">
+                    <div class="content">
+                        <div class="bg"></div>
+                        <div class="fg"></div>
+                    </div>
+                    <span class="text">FRIDGE</span>
+                </a>
+                <a href="/Home/Create/Lamp" class="button-lamp">
+                    <div class="content">
+                        <div class="bg"></div>
+                        <div class="fg"></div>
+                    </div>
+                    <span class="text">LAMP</span>
+                </a>
+                <a href="/Home/Create/Cooker" class="button-cooker">
+                    <div class="content">
+                        <div class="bg"></div>
+                        <div class="fg"></div>
+                    </div>
+                    <span class="text">COOKER</span>
+                </a>
+                <a href="/Home/Create/Microwave" class="button-microwave">
+                    <div class="content">
+                        <div class="bg"></div>
+                        <div class="fg"></div>
+                    </div>
+                    <span class="text">MICROWAVE</span>
+                </a>
+            </div>
+        </div>
+ 
+        @RenderBody()
+
+        </div>
+        <div id="footer">
+            <div class="pre-footer-column">
+                <div class="head">ABOUT ME</div>
+                <div class="content">
+                    Name: <span class="prop">Valery</span> <br />
+                    Surname: <span class="prop">Zarviro</span> <br />
+                    City: <span class="prop">Kharkov</span> <br />
+                    Student: <span class="prop">False</span> <br />
+                    English: <span class="prop">ReadOnly</span> <br />
+                    Site: <span class="prop">©Zarviro</span> <br />
+                    <div class="top-left"></div>
+                    <div class="bottom-right"></div>
+                </div>
+            </div>
+            <div class="pre-footer-column">
+                <div class="head">I STUDIED</div>
+                <div class="content">
+                    ASP: <span class="prop">WebForms</span> <br />
+                    ASP: <span class="prop">MVC</span> <br />
+                    ASP: <span class="prop">WebAPI</span> <br />
+                    WPF: <span class="prop">MVVM</span> <br />
+                    Web: <span class="prop">SASS</span> <br />
+                    Web: <span class="prop">Photoshop</span> <br />
+                    <div class="top-left"></div>
+                    <div class="bottom-right"></div>
+                </div>
+            </div>
+            <div class="pre-footer-column">
+                <div class="head">CONTACTS</div>
+                <div class="content">
+                    Skype: <br />
+                    <span class="prop">z.valera86</span> <br />
+                    Email: <br />
+                    <span class="prop">z.valera86@yandex.ru</span> <br />
+                    Telephone: <br />
+                    <span class="prop">(066) 993-86-35</span> <br />
+                    <div class="top-left"></div>
+                    <div class="bottom-right"></div>
+                </div>
+            </div>
+        </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

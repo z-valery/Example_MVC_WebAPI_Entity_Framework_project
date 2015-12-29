@@ -1,0 +1,39 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+
+#menu{
+    background-color: #266DA8;
+    border-top: 1px solid white;
+    @include breakpoint(1200px){
+        background-color: none;
+        border: none;
+        position: relative;
+        }
+
+    .buttons{
+        padding: 15px 0px;
+        margin: 0px auto;
+        text-align: center;
+        position: absolute;
+        top: -132px;
+        left: 0px;
+        @media screen and (max-width: 1200px) {
+            position: static;
+	    }
+    }
+}
+
+.api-menu{
+    .text{
+        display: none;
+        color: #b3cade;
+        position: absolute;
+        font-style: italic;
+        @include breakpoint(1200px){
+            display: block;
+            right: 45px;
+            bottom: 20px;
+            font-size: 48px;
+        }
+    }
+}

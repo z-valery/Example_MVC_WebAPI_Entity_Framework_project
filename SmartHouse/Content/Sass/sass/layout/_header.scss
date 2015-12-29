@@ -1,0 +1,81 @@
+﻿@import "C:\\Ruby22-x64\\lib\\ruby\\gems\\2.2.0\\gems\\breakpoint-2.5.0\\stylesheets\\_breakpoint.scss";
+
+#header{
+    height: 215px;
+    background-color: #266da8;
+    background-image: none;
+    @include breakpoint(1200px){
+        position:relative;
+        height: 392px;
+        background-image:url("../images/header-menu.jpg");
+    }
+
+    .logo{
+        position: absolute;
+        top: 80px;
+        left: 20px;
+        height: 182px;
+        width: 527px;
+        background: url("../images/logo.jpg") no-repeat 0px 22px;
+        @media screen and (max-width: 1200px) {
+            position: static;
+            margin: 0px auto;
+	    }
+
+        .logo-head{
+            display:block;
+            line-height:16px;
+            font-size:14px;
+            background-color: #236096;
+            border: 1px solid #cfdadf;
+            color: whitesmoke;
+            padding: 0px 5px;
+            font-style: italic;
+            @media screen and (max-width: 1200px) {
+                position: static;
+                margin: 0px auto;
+                margin-top: 10px;
+	        }
+        }
+    }
+}
+
+#api-header{
+    height: 215px;
+    background-color: #266da8;
+    background-image: none;
+    @include breakpoint(1200px){
+        position:relative;
+        height: 392px;
+        background-image:url("../images/header-menu-api.jpg");
+    }
+
+    .logo{
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        height: 182px;
+        width: 527px;
+        background: url("../images/logo.jpg") no-repeat 0px 22px;
+        @media screen and (max-width: 1200px) {
+            position: static;
+            margin: 0px auto;
+	    }
+
+        .logo-head{
+            display:block;
+            line-height:16px;
+            font-size:14px;
+            background-color: #236096;
+            border: 1px solid #cfdadf;
+            color: whitesmoke;
+            padding: 0px 5px;
+            font-style: italic;
+            @media screen and (max-width: 1200px) {
+                position: static;
+                margin: 0px auto;
+                margin-top: 10px;
+	        }
+        }
+    }
+}

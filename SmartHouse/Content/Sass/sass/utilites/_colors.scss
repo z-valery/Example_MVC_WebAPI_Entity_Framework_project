@@ -1,0 +1,124 @@
+﻿/* ## Colors
+--------------------------------------------- */
+
+$color-device-border: #c4def4;
+$color-device-border-hover: #ffffff;
+$color-device-border-active: #ffd800;
+$color-device-property-text: #ecf4fb;
+
+
+/* ## Color management
+--------------------------------------------- */
+
+/* $button-circle-content
+----------------------------------------------*/
+// default
+$button-circle-content-default_text: #b4cadd;
+$button-circle-content-default_border: #ffffff;
+$button-circle-content-default_bg_start: #b3dcff;
+$button-circle-content-default_bg_end: #385a83;
+$button-circle-content-default_shadow: #96d3ff;
+$button-circle-content-default_text_active: #ffffff;
+$button-circle-content-default_bg_start_active: #b3dcff;
+$button-circle-content-default_bg_end_active: #385a83;
+$button-circle-content-default_shadow_active: #96d3ff;
+// menu
+$button-circle-content-menu_text: #b4cadd;
+$button-circle-content-menu_border: #ffffff;
+$button-circle-content-menu_bg_start: #b3dcff;
+$button-circle-content-menu_bg_end: #385a83;
+$button-circle-content-menu_shadow: #96d3ff;
+$button-circle-content-menu_text_active: #ffffff;
+$button-circle-content-menu_bg_start_active: #ffef68;
+$button-circle-content-menu_bg_end_active: #ffc300;
+$button-circle-content-menu_shadow_active: #ffef68;
+// delete
+$button-circle-content-delete_text: #b4cadd;
+$button-circle-content-delete_border: #ffffff;
+$button-circle-content-delete_bg_start: #b3dcff;
+$button-circle-content-delete_bg_end: #385a83;
+$button-circle-content-delete_shadow: #96d3ff;
+$button-circle-content-delete_text_active: #ffffff;
+$button-circle-content-delete_bg_start_active: #ff1c1c;
+$button-circle-content-delete_bg_end_active: #dd0d0d;
+$button-circle-content-delete_shadow_active: #ffef68;
+// ok
+$button-circle-content-ok_text: #b4cadd;
+$button-circle-content-ok_border: #ffffff;
+$button-circle-content-ok_bg_start: #b3dcff;
+$button-circle-content-ok_bg_end: #385a83;
+$button-circle-content-ok_shadow: #96d3ff;
+$button-circle-content-ok_text_active: #ffffff;
+$button-circle-content-ok_bg_start_active: #88ff01;
+$button-circle-content-ok_bg_end_active: #7cd516;
+$button-circle-content-ok_shadow_active: #88ff01;
+
+$theme-button-circle-content-default: ( 
+    "text":$button-circle-content-default_text, 
+    "border":$button-circle-content-default_border, 
+    "bg_start":$button-circle-content-default_bg_start, 
+    "bg_end":$button-circle-content-default_bg_end, 
+    "shadow":$button-circle-content-default_shadow, 
+    "text_active":$button-circle-content-default_text_active, 
+    "bg_start_active":$button-circle-content-default_bg_start_active, 
+    "bg_end_active":$button-circle-content-default_bg_end_active,
+    "shadow_active":$button-circle-content-default_shadow_active, );
+
+$theme-button-circle-content-menu: ( 
+    "text":$button-circle-content-menu_text, 
+    "border":$button-circle-content-menu_border, 
+    "bg_start":$button-circle-content-menu_bg_start, 
+    "bg_end":$button-circle-content-menu_bg_end, 
+    "shadow":$button-circle-content-menu_shadow, 
+    "text_active":$button-circle-content-menu_text_active, 
+    "bg_start_active":$button-circle-content-menu_bg_start_active, 
+    "bg_end_active":$button-circle-content-menu_bg_end_active, 
+    "shadow_active":$button-circle-content-menu_shadow_active, );
+
+$theme-button-circle-content-delete: ( 
+    "text":$button-circle-content-delete_text, 
+    "border":$button-circle-content-delete_border, 
+    "bg_start":$button-circle-content-delete_bg_start, 
+    "bg_end":$button-circle-content-delete_bg_end, 
+    "shadow":$button-circle-content-delete_shadow, 
+    "text_active":$button-circle-content-delete_text_active, 
+    "bg_start_active":$button-circle-content-delete_bg_start_active, 
+    "bg_end_active":$button-circle-content-delete_bg_end_active, 
+    "shadow_active":$button-circle-content-delete_shadow_active, );
+
+$theme-button-circle-content-ok: ( 
+    "text":$button-circle-content-ok_text, 
+    "border":$button-circle-content-ok_border, 
+    "bg_start":$button-circle-content-ok_bg_start, 
+    "bg_end":$button-circle-content-ok_bg_end, 
+    "shadow":$button-circle-content-ok_shadow, 
+    "text_active":$button-circle-content-ok_text_active, 
+    "bg_start_active":$button-circle-content-ok_bg_start_active, 
+    "bg_end_active":$button-circle-content-ok_bg_end_active, 
+    "shadow_active":$button-circle-content-ok_shadow_active, );
+
+
+@function ws-color($name, $theme) {
+    @if($theme=="delete")
+    {
+        @return map-get($theme-button-circle-content-delete, $name);
+    }
+    @else 
+    {
+        @if($theme=="ok") 
+        {
+            @return map-get($theme-button-circle-content-ok, $name);
+        }
+        @else
+        {
+            @if($theme=="menu")
+            {
+                @return map-get($theme-button-circle-content-menu, $name);
+            }
+            @else 
+            {
+                @return map-get($theme-button-circle-content-default, $name);
+            }
+        }
+    }
+}
